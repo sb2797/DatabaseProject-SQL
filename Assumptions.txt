@@ -1,0 +1,11 @@
+Assumptions:
+
+A treatment can be a test/procedure at New Haven Urgent Care.  
+A follow up is an order to receive a treatment elsewhere.
+Cost is only tabulated for procedures performed at New Haven.
+Patient insurance data (old and current) are stored as an attribute of the patient.
+A new treatment entity is created for each treatment assigned to a patient to allow for more information to be tracked.
+This is also true for diagnosis.
+Service providers, clerks, and nurses are all employees.  Other types of employees are not relevant to this diagram.
+Departments outside of Billing are not relevant to the diagram.
+Service providers get a separate "Service Provider" ID, which is different from their employee ID.

@@ -1,0 +1,49 @@
+Assumptions:
+We are using min-max notation for cardinalities.
+
+A treatment can be a test/procedure at New Haven Urgent Care.  
+A follow up is an order to receive a treatment elsewhere.
+Cost is only tabulated for procedures performed at New Haven.
+A new treatment entity is created for each treatment assigned to a patient to allow for more information to be tracked.
+This is also true for diagnosis.
+Service providers, clerks, and nurses are all employees.  Other types of employees are not relevant to this diagram.
+A provider ID is the employee ID of a service provider.  The same is true for nurses and clerks.
+A patient may only visit one time per day.
+
+Binary Relationships: (1,1)
+
+Changes from previous diagram:
+Several relations in our original diagram are more aptly described by a ternary relationship:
+
+Visit,supply,nurse form a ternary relationship.  
+For each visit, one and only one nurse tracks any number of supplies.
+A nurse may track many supplies for a single visit.
+A nurse may track many different visits.
+A type of supply may be used in many different visits.
+A type of supply is tracked by many different nurses.
+
+Visit, diagnosis, and service provider (SP) form a ternary relationship.
+For each visit, there is a primary service provider and a diagnosis.
+An SP may oversee many different visits.
+An SP may provide many diagnoses to a single patient in a single visit.
+An SP may provide a similar diagnosis to multiple patients.
+
+Patient, Insurance, and Clerk also form a ternary relationship.
+For each patient they have a history of insurance information.
+There can be 0 to many entries for their information.
+The patient is assigned 1 and only one clerk to intake their information.
+The clerk can intake 0 to many insurance information entities from 1 to many patients.
+Insurance information can have 1 and only 1 patient that possesses it, and
+it can only be intaked by 1 and only 1 clerk.
+
+Treatment, Followup, and Test/Procedure consist of a class hierarchy.
+For each visit there is a Test/Procedure which may lead to a Treatment.
+After the Treatment there will be a Followup and may lead to another Test/Procedure.
+A TreatmentName could determine the cost of the Procedure.
+
+
+Added several missing attributes/entities:
+Patient insurance information and the coresponding attributes
+Patient date of birth
+Initial assessment attributes
+Changed cardinality of Nurse:Inital assessment from 1:1 to 0:M.  A nurse may perform 0 to many initial assessments.
